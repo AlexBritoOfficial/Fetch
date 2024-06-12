@@ -4,11 +4,11 @@
 This project is a native Android app written in Kotlin that retrieves and displays data from the Fetch Rewards API endpoint.
 
 ## Project Requirements
-Please write a native Android app in Kotlin or Java that retrieves the data from [Fetch Rewards API](https://fetch-hiring.s3.amazonaws.com/hiring.json).
+Write a native Android app in Kotlin or Java that retrieves the data from [Fetch Rewards API](https://fetch-hiring.s3.amazonaws.com/hiring.json).
 
 ### Display Requirements
 - Display all the items grouped by "listId".
-- Sort the results first by "listId", then by "name" when displaying.
+- Sort the results first by "listId", and then by "name" when displaying.
 - Filter out any items where "name" is blank or null.
 - The final result should be displayed to the user in an easy-to-read list.
 
