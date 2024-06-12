@@ -1,6 +1,3 @@
-Certainly! Below is a basic template for your Git README file based on the requirements you've provided:
-
----
 
 # Fetch Rewards Coding Exercise - Software Engineering - Mobile
 
