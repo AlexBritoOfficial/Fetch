@@ -30,7 +30,6 @@ class FetchHiringListFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         _fetchHiringListBinding = FetchHiringListBinding.inflate(inflater,container, false)
-
         val view = fetchHiringListBinding.root
 
         return view
@@ -41,6 +40,7 @@ class FetchHiringListFragment: Fragment() {
 
         initRecyclerView(view)
         initViewModel()
+        initObservers()
     }
 
     private fun initRecyclerView(view: View){
@@ -52,6 +52,9 @@ class FetchHiringListFragment: Fragment() {
 
     private fun initViewModel(){
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+    }
+
+    private fun initObservers(){
         viewModel.getLiveDataObserver().observe(viewLifecycleOwner, {hiringList ->
             if(hiringList != null){
                 hiringListAdapter.setHiringList(hiringList)
@@ -60,6 +63,5 @@ class FetchHiringListFragment: Fragment() {
                 Toast.makeText(context, "Error in loading data", Toast.LENGTH_LONG)
             }
         })
-        viewModel.fetchHiringList()
     }
 }
