@@ -12,15 +12,17 @@ import retrofit2.Response
 
 class MainViewModel: ViewModel() {
 
-    lateinit var liveDatalist: MutableLiveData<List<Item>?>
+    private val _liveDatalist: MutableLiveData<List<Item>?> = MutableLiveData()
+    private val liveDataList: MutableLiveData<List<Item>?>  get() = _liveDatalist
+
 
 
     init {
-        liveDatalist = MutableLiveData()
+        fetchHiringList()
     }
 
     fun getLiveDataObserver(): MutableLiveData<List<Item>?> {
-        return liveDatalist
+        return liveDataList
     }
 
      fun fetchHiringList() {
@@ -30,14 +32,14 @@ class MainViewModel: ViewModel() {
         call.enqueue(object: Callback<List<Item>> {
             override fun onResponse(call: Call<List<Item>>, response: Response<List<Item>>) {
                 if (response.isSuccessful) {
-                    liveDatalist.postValue(response.body())
+                    _liveDatalist.postValue(response.body())
                 } else {
-                    liveDatalist.postValue(null)
+                    _liveDatalist.postValue(null)
                 }
             }
 
             override fun onFailure(call: Call<List<Item>>, t: Throwable) {
-                liveDatalist.postValue(null)
+                _liveDatalist.postValue(null)
             }
         })
     }
